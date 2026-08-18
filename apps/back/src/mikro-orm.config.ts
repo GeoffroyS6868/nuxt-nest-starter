@@ -2,7 +2,7 @@ import { defineConfig } from "@mikro-orm/postgresql";
 import { SqlHighlighter } from "@mikro-orm/sql-highlighter";
 import { log } from "evlog";
 import * as dotenv from "dotenv";
-import { getDatabasePassword } from "./common/envirronement/secrets";
+import { getDatabasePassword } from "./common/environment/secrets";
 import { AppNamingStrategy } from "./common/mikro-orm/app-naming.strategy";
 import { mikroOrmEntities } from "./mikro-orm.entities";
 
