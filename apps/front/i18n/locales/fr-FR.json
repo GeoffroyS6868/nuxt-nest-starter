@@ -1,0 +1,40 @@
+{
+  "common": {
+    "appName": "Nuxt Nest Starter"
+  },
+  "nav": {
+    "home": "Accueil",
+    "login": "Connexion",
+    "register": "Inscription",
+    "profile": "Profil",
+    "logout": "Déconnexion"
+  },
+  "page": {
+    "home": {
+      "title": "Le starter tourne",
+      "subtitle": "Frontend Nuxt 4, API NestJS, et auth par cookie.",
+      "signedInAs": "Connecté en tant que {name}."
+    },
+    "profile": {
+      "title": "Profil",
+      "save": "Enregistrer",
+      "saved": "Profil mis à jour.",
+      "saveFailed": "Impossible de mettre à jour le profil. Réessayez."
+    },
+    "authentication": {
+      "login": "Connexion",
+      "register": "Inscription",
+      "email": "E-mail",
+      "password": "Mot de passe",
+      "userName": "Nom d'utilisateur",
+      "google": "Continuer avec Google",
+      "noAccount": "Pas de compte ?",
+      "hasAccount": "Déjà un compte ?",
+      "errors": {
+        "loginFailed": "Connexion impossible. Vérifiez l'e-mail et le mot de passe.",
+        "signupFailed": "Création du compte impossible. Essayez un autre e-mail.",
+        "googleFailed": "La connexion Google a échoué. Réessayez ou utilisez e-mail et mot de passe."
+      }
+    }
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "name": "nuxt-nest-starter",
+  "private": true,
+  "license": "MIT",
+  "scripts": {
+    "preinstall": "npx only-allow pnpm",
+    "dev": "turbo run dev",
+    "dev:back": "turbo run dev --filter=back",
+    "dev:front": "turbo run dev --filter=front",
+    "build": "turbo run build",
+    "start": "pnpm --filter back start",
+    "lint": "turbo run lint",
+    "lint:fix": "turbo run lint:fix",
+    "fmt": "turbo run fmt",
+    "fmt:check": "turbo run fmt:check",
+    "test:back": "turbo run test --filter=back",
+    "test:front": "turbo run test --filter=front"
+  },
+  "devDependencies": {
+    "@oxlint/plugins": "1.78.0",
+    "lefthook": "^2.1.10",
+    "only-allow": "^1.2.2",
+    "oxfmt": "^0.60.0",
+    "oxlint": "^1.78.0",
+    "turbo": "^2.10.8"
+  },
+  "packageManager": "pnpm@11.17.0"
+}

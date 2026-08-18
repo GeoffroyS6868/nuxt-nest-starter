@@ -1,0 +1,169 @@
+name: Pull Request Checks
+
+on:
+  pull_request:
+    branches:
+      - main
+
+permissions:
+  contents: read
+  pull-requests: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.sha }}
+  cancel-in-progress: true
+
+jobs:
+  changes:
+    name: Detect changes
+    runs-on: ubuntu-latest
+    outputs:
+      quality: ${{ steps.filter.outputs.quality }}
+      backend: ${{ steps.filter.outputs.backend }}
+      frontend: ${{ steps.filter.outputs.frontend }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Filter paths
+        uses: dorny/paths-filter@v3
+        id: filter
+        with:
+          filters: |
+            quality:
+              - 'apps/**'
+              - 'packages/**'
+              - 'package.json'
+              - 'pnpm-lock.yaml'
+              - 'pnpm-workspace.yaml'
+              - 'turbo.json'
+              - '.oxlintrc.json'
+              - '.oxfmtrc.json'
+              - '.nvmrc'
+              - '.npmrc'
+              - 'lefthook.yml'
+              - 'docker-compose.local.yml'
+              - '.github/workflows/**'
+            backend:
+              - 'apps/back/**'
+              - 'packages/types/**'
+              - 'packages/utils/**'
+              - 'package.json'
+              - 'pnpm-lock.yaml'
+              - 'pnpm-workspace.yaml'
+              - 'turbo.json'
+            frontend:
+              - 'apps/front/**'
+              - 'packages/**'
+              - 'package.json'
+              - 'pnpm-lock.yaml'
+              - 'pnpm-workspace.yaml'
+              - 'turbo.json'
+
+  quality:
+    name: Lint and format
+    needs: changes
+    if: needs.changes.outputs.quality == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - uses: pnpm/action-setup@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: ".nvmrc"
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Lint
+        run: pnpm run lint
+
+      - name: Format check
+        run: pnpm run fmt:check
+
+  backend:
+    name: Backend unit tests
+    needs: changes
+    if: needs.changes.outputs.backend == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - uses: pnpm/action-setup@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: ".nvmrc"
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Test
+        run: pnpm --filter back test
+        env:
+          JWT_KEY: test-jwt-key
+          FRONT_URL: http://localhost:4000
+
+  frontend:
+    name: Frontend typecheck and build
+    needs: changes
+    if: needs.changes.outputs.frontend == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - uses: pnpm/action-setup@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: ".nvmrc"
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Typecheck
+        run: pnpm --filter front run typecheck
+
+      - name: Build
+        run: pnpm --filter front run build
+        env:
+          CI: true
+          NODE_OPTIONS: --max-old-space-size=8192
+
+  ci:
+    name: CI
+    needs: [changes, quality, backend, frontend]
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check results
+        run: |
+          results=(
+            "${{ needs.changes.result }}"
+            "${{ needs.quality.result }}"
+            "${{ needs.backend.result }}"
+            "${{ needs.frontend.result }}"
+          )
+
+          for result in "${results[@]}"; do
+            case "$result" in
+              success|skipped) ;;
+              *)
+                echo "A required job finished with status: $result"
+                exit 1
+                ;;
+            esac
+          done
+
+          echo "All executed jobs succeeded (path-skipped jobs ignored)."
