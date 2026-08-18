@@ -1,4 +1,4 @@
-import { IsEmail, IsNotEmpty, IsString, Length } from "class-validator";
+import { IsEmail, IsNotEmpty, IsString, Length, Matches } from "class-validator";
 
 export class CreateUserDto {
   @IsNotEmpty()
@@ -8,7 +8,9 @@ export class CreateUserDto {
 
   @IsNotEmpty()
   @IsString()
-  @Length(8, 100)
+  @Matches(/^(?=.*\p{L})(?=.*\d).{8,100}$/u, {
+    message: "Password must be 8–100 characters and include a letter and a number.",
+  })
   readonly password!: string;
 
   @IsNotEmpty()

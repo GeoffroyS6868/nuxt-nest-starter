@@ -89,7 +89,10 @@ async function onSubmit(event: Event) {
         <UFormField :label="$t('page.authentication.email')">
           <UInput v-model="state.email" type="email" autocomplete="email" class="w-full" />
         </UFormField>
-        <UFormField :label="$t('page.authentication.password')">
+        <UFormField
+          :label="$t('page.authentication.password')"
+          :description="$t('page.authentication.passwordHint')"
+        >
           <UInput
             v-model="state.password"
             type="password"

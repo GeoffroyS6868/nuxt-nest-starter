@@ -15,6 +15,8 @@ const config: Config = {
   collectCoverageFrom: [
     "auth/auth.guard.ts",
     "auth/auth.service.ts",
+    "common/environment/cors-origins.ts",
+    "common/environment/secrets.ts",
     "user/user.service.ts",
     "user/domain/staff-access.ts",
     "!**/*.spec.ts",
