@@ -3,21 +3,12 @@ import { FastifyAdapter, NestFastifyApplication } from "@nestjs/platform-fastify
 import { ValidationPipe } from "@nestjs/common";
 import { initLogger } from "evlog";
 import { AppModule } from "./app.module";
+import { resolveCorsOrigins } from "./common/environment/cors-origins";
+import { getFrontUrl } from "./common/environment/secrets";
 import cookie from "@fastify/cookie";
 import multipart from "@fastify/multipart";
 
 const isProduction = process.env.NODE_ENV === "production";
-
-const defaultOrigins = ["http://localhost:4000", "http://localhost:4001"];
-
-function corsOrigins(): string[] {
-  const extra = (process.env.CORS_ORIGINS ?? "")
-    .split(",")
-    .map((origin) => origin.trim())
-    .filter((origin) => origin.length > 0);
-
-  return [...new Set([...defaultOrigins, ...extra])];
-}
 
 initLogger({
   env: { service: "starter-back" },
@@ -40,7 +31,11 @@ async function bootstrap() {
   const app = await NestFactory.create<NestFastifyApplication>(AppModule, new FastifyAdapter());
 
   app.enableCors({
-    origin: corsOrigins(),
+    origin: resolveCorsOrigins({
+      isProduction,
+      frontUrl: getFrontUrl(),
+      extraOrigins: process.env.CORS_ORIGINS ?? "",
+    }),
     methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
     credentials: true,
   });

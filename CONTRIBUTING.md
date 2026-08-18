@@ -1,5 +1,7 @@
 # Contributing
 
+By participating, you agree to the [Code of Conduct](CODE_OF_CONDUCT.md).
+
 ## Setup
 
 1. Node.js 24.13.1 and pnpm 11+

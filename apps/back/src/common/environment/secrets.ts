@@ -26,7 +26,11 @@ export function getDatabasePassword(): string {
 }
 
 export function getJwtToken(): string {
-  return readRequiredSecret("JWT_KEY", "starter_jwt_key", "JWT key");
+  const value = readRequiredSecret("JWT_KEY", "starter_jwt_key", "JWT key");
+  if (process.env.NODE_ENV === "production" && value.length < 32) {
+    throw new Error("JWT_KEY must be at least 32 characters in production.");
+  }
+  return value;
 }
 
 export function getGoogleClientSecret(): string {
@@ -42,7 +46,14 @@ export function getGoogleRedirectUri(): string {
 }
 
 export function getFrontUrl(): string {
-  return process.env.FRONT_URL ?? "http://localhost:4000";
+  const value = process.env.FRONT_URL;
+  if (value) {
+    return value;
+  }
+  if (process.env.NODE_ENV === "production") {
+    throw new Error("FRONT_URL is required in production.");
+  }
+  return "http://localhost:4000";
 }
 
 export function getCookieDomain(): string {
