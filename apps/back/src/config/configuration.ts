@@ -6,7 +6,7 @@ import {
   getGoogleClientSecret,
   getGoogleRedirectUri,
   getJwtToken,
-} from "src/common/envirronement/secrets";
+} from "src/common/environment/secrets";
 
 export default () => ({
   databasePassword: getDatabasePassword(),
