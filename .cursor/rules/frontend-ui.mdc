@@ -1,0 +1,14 @@
+---
+description: Nuxt front — UI, i18n, API client
+globs: apps/front/**
+alwaysApply: false
+---
+
+# Frontend (apps/front)
+
+Read **`.agents/skills/nuxt/SKILL.md`**.
+
+- Use Nuxt UI components. Keep layouts thin.
+- Every user-facing string goes through i18n (`en-US` + `fr-FR`). Use `$localePath()` for internal links.
+- Call the Nest API with `apiFetch` (`credentials: "include"`). Do not store JWTs in localStorage.
+- Session state: `useUser()` is `undefined` (unknown), `null` (guest), or `User`.

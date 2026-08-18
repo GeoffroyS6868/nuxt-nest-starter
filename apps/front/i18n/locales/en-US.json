@@ -1,0 +1,40 @@
+{
+  "common": {
+    "appName": "Nuxt Nest Starter"
+  },
+  "nav": {
+    "home": "Home",
+    "login": "Log in",
+    "register": "Sign up",
+    "profile": "Profile",
+    "logout": "Log out"
+  },
+  "page": {
+    "home": {
+      "title": "Starter is running",
+      "subtitle": "Nuxt 4 frontend, NestJS API, and cookie auth.",
+      "signedInAs": "Signed in as {name}."
+    },
+    "profile": {
+      "title": "Profile",
+      "save": "Save",
+      "saved": "Profile updated.",
+      "saveFailed": "Could not update your profile. Try again."
+    },
+    "authentication": {
+      "login": "Log in",
+      "register": "Sign up",
+      "email": "Email",
+      "password": "Password",
+      "userName": "Username",
+      "google": "Continue with Google",
+      "noAccount": "No account?",
+      "hasAccount": "Already have an account?",
+      "errors": {
+        "loginFailed": "Could not log in. Check your email and password.",
+        "signupFailed": "Could not create the account. Try a different email.",
+        "googleFailed": "Google sign-in failed. Try again or use email and password."
+      }
+    }
+  }
+}

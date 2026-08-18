@@ -1,0 +1,14 @@
+---
+description: Monorepo hub — skills, packages, tooling
+alwaysApply: true
+---
+
+# Project hub
+
+pnpm + Turborepo. Apps in `apps/`, shared code in `packages/` as `@starter/*`.
+
+Load skills from `.agents/skills/` before large changes (`nuxt`, `nestjs-best-practices`, `turborepo`).
+
+- `types` and `utils` stay framework-free.
+- Lint with oxlint, format with oxfmt.
+- Front talks to Nest only (cookie auth). Do not add a Nitro API proxy.

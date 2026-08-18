@@ -1,0 +1,33 @@
+services:
+  postgresdb:
+    image: postgres:18.0-alpine
+    environment:
+      - POSTGRES_USER=starter
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=starter
+    ports:
+      - "5433:5432"
+    volumes:
+      - postgres-data-starter:/var/lib/postgresql/data
+    networks:
+      - starter_net
+
+  redis:
+    image: redis:7.4-alpine
+    command: redis-server --save 20 1 --loglevel warning
+    ports:
+      - "6380:6379"
+    volumes:
+      - redis-data-starter:/data
+    networks:
+      - starter_net
+
+volumes:
+  postgres-data-starter:
+    driver: local
+  redis-data-starter:
+    driver: local
+
+networks:
+  starter_net:
+    driver: bridge
