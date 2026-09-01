@@ -28,7 +28,7 @@ catalog:
   "@nuxtjs/i18n": ^10.5.0
   vue-tsc: ^3.3.8
   "@iconify-json/fluent": ^1.2.53
-  "@iconify-json/lucide": ^1.2.118
+  "@iconify-json/lucide": ^1.2.126
   evlog: ^2.22.3
   "@nestjs/common": ^11.1.28
   "@nestjs/core": ^11.1.28
