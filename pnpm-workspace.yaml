@@ -33,7 +33,7 @@ catalog:
   "@nestjs/common": ^11.1.28
   "@nestjs/core": ^11.1.28
   "@nestjs/platform-fastify": ^11.1.28
-  "@nestjs/testing": ^11.1.28
+  "@nestjs/testing": ^12.0.1
   "@mikro-orm/cli": ^7.1.7
   "@mikro-orm/core": ^7.1.7
   "@mikro-orm/decorators": ^7.1.7
