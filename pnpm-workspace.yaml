@@ -43,3 +43,8 @@ catalog:
   "@mikro-orm/migrations": ^7.2.0
   "@mikro-orm/postgresql": ^7.2.0
   "@mikro-orm/seeder": ^7.2.0
+
+minimumReleaseAgeExclude:
+  - vue
+  - "@vue/*"
+  - "@nestjs/throttler"
