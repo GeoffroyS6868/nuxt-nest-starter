@@ -7500,8 +7500,8 @@ packages:
   pure-rand@7.0.1:
     resolution: {integrity: sha512-oTUZM/NAZS8p7ANR3SHh30kXB+zK2r2BPcEn/awJIbOvq82WoMN4p62AWWp3Hhw50G0xMsw1mhIBLqHw64EcNQ==}
 
-  qs@6.15.3:
-    resolution: {integrity: sha512-O9gl3zCl5h5blw1KGUzQKhA5oUXSl8rwUIM5o0S3nCXMliSvy5Dzx7/DJcI+SwgICv+IneSZwhBh1oSyEHA71A==}
+  qs@6.16.0:
+    resolution: {integrity: sha512-h6fhOIaRrID2CbEY2fqs+7t+UXZo+MLAnU5gRIq85uFtdiUPCdsApMlHhXogKVM4HM2DVbIjGNTTYH2OcmP1vA==}
     engines: {node: '>=0.6'}
 
   quansync@0.2.11:
@@ -14876,7 +14876,7 @@ snapshots:
       gaxios: 7.3.1(supports-color@10.2.2)
       google-auth-library: 11.1.0(supports-color@10.2.2)
       google-logging-utils: 2.0.1
-      qs: 6.15.3
+      qs: 6.16.0
       url-template: 2.0.8
     transitivePeerDependencies:
       - supports-color
@@ -17616,7 +17616,7 @@ snapshots:
 
   pure-rand@7.0.1: {}
 
-  qs@6.15.3:
+  qs@6.16.0:
     dependencies:
       es-define-property: 1.0.1
       side-channel: 1.1.1
