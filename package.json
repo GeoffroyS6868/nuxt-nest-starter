@@ -20,7 +20,7 @@
     "lefthook": "^2.1.14",
     "only-allow": "^1.2.2",
     "oxfmt": "^0.68.0",
-    "oxlint": "^1.83.0",
+    "oxlint": "^1.85.0",
     "turbo": "^2.10.13"
   },
   "packageManager": "pnpm@11.27.0"
