@@ -25,7 +25,7 @@ allowBuilds:
   vue-demi: true
 
 catalog:
-  # NestJS, vue-tsc and ts-jest require the TypeScript 6 compiler API.
+  # NestJS and vue-tsc require the TypeScript 6 compiler API.
   typescript: ^6.0.3
   "@types/node": ^26.6.5
   nuxt: ^4.6.1

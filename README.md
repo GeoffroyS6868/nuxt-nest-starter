@@ -58,13 +58,13 @@ Roles are `admin` (all permissions) and `editor` (`content.manage`). Edit the ma
 
 ## Scripts
 
-| Script                        | What it does    |
-| ----------------------------- | --------------- |
-| `pnpm dev`                    | Run all apps    |
-| `pnpm dev:front` / `dev:back` | One app         |
-| `pnpm build`                  | Build all       |
-| `pnpm lint` / `pnpm fmt`      | oxlint / oxfmt  |
-| `pnpm test:back`              | Jest unit tests |
+| Script                        | What it does      |
+| ----------------------------- | ----------------- |
+| `pnpm dev`                    | Run all apps      |
+| `pnpm dev:front` / `dev:back` | One app           |
+| `pnpm build`                  | Build all         |
+| `pnpm lint` / `pnpm fmt`      | oxlint / oxfmt    |
+| `pnpm test:back`              | Vitest unit tests |
 
 ## Auth
 

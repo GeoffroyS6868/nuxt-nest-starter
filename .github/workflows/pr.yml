@@ -106,6 +106,9 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
+      - name: Typecheck
+        run: pnpm --filter back run typecheck
+
       - name: Test
         run: pnpm --filter back test
         env:

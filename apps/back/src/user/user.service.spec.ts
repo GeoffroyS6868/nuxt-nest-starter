@@ -1,3 +1,4 @@
+import { beforeEach, describe, expect, it, vi } from "vitest";
 import { Test, TestingModule } from "@nestjs/testing";
 import { ConflictException, NotFoundException } from "@nestjs/common";
 import { UserService } from "./user.service";
@@ -7,22 +8,22 @@ import { User } from "./domain/user.entity";
 describe("UserService", () => {
   let service: UserService;
   const userRepository = {
-    findByEmail: jest.fn(),
-    findById: jest.fn(),
-    findByGoogleId: jest.fn(),
-    findByEmailWithPassword: jest.fn(),
-    existsByEmail: jest.fn(),
-    existsByUserName: jest.fn(),
-    save: jest.fn(),
+    findByEmail: vi.fn(),
+    findById: vi.fn(),
+    findByGoogleId: vi.fn(),
+    findByEmailWithPassword: vi.fn(),
+    existsByEmail: vi.fn(),
+    existsByUserName: vi.fn(),
+    save: vi.fn(),
   };
 
   beforeEach(async () => {
+    vi.resetAllMocks();
     const module: TestingModule = await Test.createTestingModule({
       providers: [UserService, { provide: USER_REPOSITORY, useValue: userRepository }],
     }).compile();
 
     service = module.get(UserService);
-    jest.clearAllMocks();
   });
 
   describe("create", () => {

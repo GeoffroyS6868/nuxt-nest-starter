@@ -1,0 +1,11 @@
+{
+  "extends": ["//"],
+  "tasks": {
+    "test": {
+      "passThroughEnv": ["SWC_NATIVE_BINDING_CACHE"]
+    },
+    "test:cov": {
+      "passThroughEnv": ["SWC_NATIVE_BINDING_CACHE"]
+    }
+  }
+}
