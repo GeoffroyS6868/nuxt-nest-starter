@@ -1,3 +1,4 @@
+import { beforeEach, describe, expect, it, vi } from "vitest";
 import { Test, TestingModule } from "@nestjs/testing";
 import { UnauthorizedException } from "@nestjs/common";
 import { JwtService } from "@nestjs/jwt";
@@ -8,23 +9,23 @@ import { AuthGuard } from "./auth.guard";
 describe("AuthGuard", () => {
   let guard: AuthGuard;
   const jwtService = {
-    verifyAsync: jest.fn(),
+    verifyAsync: vi.fn(),
   };
 
   beforeEach(async () => {
+    vi.resetAllMocks();
     const module: TestingModule = await Test.createTestingModule({
       providers: [
         AuthGuard,
         { provide: JwtService, useValue: jwtService },
         {
           provide: ConfigService,
-          useValue: { get: jest.fn().mockReturnValue("secret") },
+          useValue: { get: vi.fn().mockReturnValue("secret") },
         },
       ],
     }).compile();
 
     guard = module.get(AuthGuard);
-    jest.clearAllMocks();
   });
 
   const createContext = (cookies?: Record<string, string>): ExecutionContext =>

@@ -16,12 +16,12 @@
     "test:back": "turbo run test --filter=back"
   },
   "devDependencies": {
-    "@oxlint/plugins": "1.83.0",
-    "lefthook": "^2.1.14",
+    "@oxlint/plugins": "1.87.0",
+    "lefthook": "^2.2.1",
     "only-allow": "^1.2.2",
-    "oxfmt": "^0.68.0",
-    "oxlint": "^1.83.0",
-    "turbo": "^2.10.13"
+    "oxfmt": "^0.72.0",
+    "oxlint": "^1.87.0",
+    "turbo": "^2.11.7"
   },
-  "packageManager": "pnpm@11.27.0"
+  "packageManager": "pnpm@12.11.2"
 }

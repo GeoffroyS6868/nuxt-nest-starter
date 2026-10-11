@@ -4,7 +4,7 @@ By participating, you agree to the [Code of Conduct](CODE_OF_CONDUCT.md).
 
 ## Setup
 
-1. Node.js 24.13.1 and pnpm 11+
+1. Node.js 24.21.0 and pnpm 12+
 2. `pnpm install`
 3. Copy `.env.example` files in `apps/front` and `apps/back`
 4. `docker compose -f docker-compose.local.yml up -d`

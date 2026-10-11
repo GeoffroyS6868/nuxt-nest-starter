@@ -1,3 +1,4 @@
+import { describe, expect, it } from "vitest";
 import { isStaffRole, permissionsForRole, roleHasPermission } from "./staff-access";
 
 describe("staff-access", () => {

@@ -1,3 +1,4 @@
+import { describe, expect, it } from "vitest";
 import { resolveCorsOrigins } from "./cors-origins";
 
 describe("resolveCorsOrigins", () => {
