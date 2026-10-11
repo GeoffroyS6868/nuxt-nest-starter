@@ -1,11 +1,11 @@
 # syntax=docker/dockerfile:1.7
 
 # Monorepo context: always build from repository root (--file apps/front/Dockerfile).
-FROM node:24.13.1-alpine AS base
+FROM node:24.21.0-alpine AS base
 
 WORKDIR /app
 RUN apk add --no-cache libc6-compat \
-  && npm install -g pnpm@11.27.0
+  && npm install -g pnpm@12.11.2
 
 FROM base AS deps
 
@@ -41,7 +41,7 @@ ENV NUXT_PUBLIC_API_BASE=${NUXT_PUBLIC_API_BASE}
 
 RUN pnpm run build
 
-FROM node:24.13.1-alpine AS runtime
+FROM node:24.21.0-alpine AS runtime
 
 ENV NODE_ENV=production
 ENV NITRO_HOST=0.0.0.0

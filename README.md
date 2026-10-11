@@ -25,8 +25,8 @@ Redis is included so `/health` and future cache/session work have a broker. Noth
 
 ## Prerequisites
 
-- Node.js 24.13.1 (see `.nvmrc`)
-- pnpm 11+
+- Node.js 24.21.0 (see `.nvmrc`)
+- pnpm 12+
 - Docker and Docker Compose for local Postgres and Redis
 
 ## Install
@@ -58,12 +58,12 @@ Roles are `admin` (all permissions) and `editor` (`content.manage`). Edit the ma
 
 ## Scripts
 
-| Script                        | What it does   |
-| ----------------------------- | -------------- |
-| `pnpm dev`                    | Run all apps   |
-| `pnpm dev:front` / `dev:back` | One app        |
-| `pnpm build`                  | Build all      |
-| `pnpm lint` / `pnpm fmt`      | oxlint / oxfmt |
+| Script                        | What it does    |
+| ----------------------------- | --------------- |
+| `pnpm dev`                    | Run all apps    |
+| `pnpm dev:front` / `dev:back` | One app         |
+| `pnpm build`                  | Build all       |
+| `pnpm lint` / `pnpm fmt`      | oxlint / oxfmt  |
 | `pnpm test:back`              | Jest unit tests |
 
 ## Auth
