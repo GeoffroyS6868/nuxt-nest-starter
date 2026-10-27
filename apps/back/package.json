@@ -45,7 +45,7 @@
     "class-validator": "^0.15.1",
     "dotenv": "^18.0.7",
     "evlog": "catalog:",
-    "fastify": "5.12.5",
+    "fastify": "5.12.6",
     "googleapis": "^185.0.0",
     "ioredis": "^6.0.0",
     "pg": "^8.23.1",
