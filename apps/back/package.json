@@ -68,7 +68,7 @@
     "tsconfig-paths": "^4.2.0",
     "typescript": "catalog:",
     "unplugin-swc": "^2.0.0",
-    "vitest": "5.0.3"
+    "vitest": "5.0.5"
   },
   "mikro-orm": {
     "configPaths": [
