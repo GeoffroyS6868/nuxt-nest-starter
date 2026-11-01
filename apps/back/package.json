@@ -46,7 +46,7 @@
     "dotenv": "^18.0.7",
     "evlog": "catalog:",
     "fastify": "5.12.6",
-    "googleapis": "^185.0.0",
+    "googleapis": "^188.0.0",
     "ioredis": "^6.0.0",
     "pg": "^8.23.1",
     "reflect-metadata": "^0.2.2",
