@@ -331,8 +331,8 @@ importers:
         specifier: 5.12.5
         version: 5.12.5
       googleapis:
-        specifier: ^185.0.0
-        version: 185.0.0(supports-color@10.2.2)
+        specifier: ^188.0.0
+        version: 188.0.0(supports-color@10.2.2)
       ioredis:
         specifier: ^6.0.0
         version: 6.0.0(supports-color@10.2.2)
@@ -5273,8 +5273,8 @@ packages:
     resolution: {integrity: sha512-OYCBMfAPDJSB4E1RiQQzrIxCJLGMVrCgeVvuUKzSLBgnSSA+hH3X16/q76UMjS/HCJmOjcVVopwhUUnTo2SHyg==}
     engines: {node: '>=22'}
 
-  googleapis@185.0.0:
-    resolution: {integrity: sha512-w/rO9+ank7JpAj65X6DzUoSLbxvHtsTf4F2kD9+8AScA3KEzDjeTFOUFVldDSePSuRSlpJkP/s36fMaqgFX3sw==}
+  googleapis@188.0.0:
+    resolution: {integrity: sha512-dLGvMAlYOiemwYnhFoy1bDd+dnB6o8mGxnXhLCirAjAww8F/Qs59XY3EHm7p7RGENtDRTqyM7oV7DQ22V4BaOA==}
     engines: {node: '>=22.0.0'}
 
   gopd@1.2.0:
@@ -13189,7 +13189,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  googleapis@185.0.0(supports-color@10.2.2):
+  googleapis@188.0.0(supports-color@10.2.2):
     dependencies:
       google-auth-library: 11.2.0(supports-color@10.2.2)
       googleapis-common: 9.2.0(supports-color@10.2.2)
