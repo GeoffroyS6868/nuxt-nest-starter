@@ -4,14 +4,16 @@ packages:
 
 overrides:
   h3: 1.15.11
-  fastify: 5.12.5
-  vue: 3.5.43
-  vue-router: 5.4.0
-  vue-i18n: 11.4.14
-  "@intlify/shared": 11.4.14
-  "@intlify/core-base": 11.4.14
-  "@intlify/devtools-types": 11.4.14
+  fastify: 5.12.8
+  vue: 3.5.46
+  vue-router: 5.5.1
+  vue-i18n: 11.4.23
+  "@intlify/shared": 11.4.23
+  "@intlify/core-base": 11.4.23
+  "@intlify/devtools-types": 11.4.23
   "fontless>esbuild": 0.28.2
+  "archiver>readdir-glob": 4.0.0
+  "@swc/cli>minimatch": 11.0.9
 
 allowBuilds:
   "@nestjs/core": true
@@ -27,27 +29,27 @@ allowBuilds:
 catalog:
   # NestJS and vue-tsc require the TypeScript 6 compiler API.
   typescript: ^6.0.3
-  "@types/node": ^26.6.5
-  nuxt: ^4.6.1
-  vue: ^3.5.43
-  vue-router: ^5.4.0
-  vue-i18n: ^11.4.14
-  "@nuxt/ui": ^4.11.3
+  "@types/node": ^26.6.6
+  nuxt: ^4.6.4
+  vue: ^3.5.46
+  vue-router: ^5.5.1
+  vue-i18n: ^11.4.23
+  "@nuxt/ui": ^4.13.0
   "@nuxtjs/i18n": ^10.6.0
-  vue-tsc: ^3.3.13
-  "@iconify-json/fluent": ^1.2.59
-  "@iconify-json/lucide": ^1.2.142
-  evlog: ^2.30.1
-  "@nestjs/common": ^12.1.2
-  "@nestjs/core": ^12.1.2
-  "@nestjs/platform-fastify": ^12.1.2
-  "@nestjs/testing": ^12.1.2
-  "@mikro-orm/cli": ^7.2.5
-  "@mikro-orm/core": ^7.2.5
-  "@mikro-orm/decorators": ^7.2.5
-  "@mikro-orm/migrations": ^7.2.5
-  "@mikro-orm/postgresql": ^7.2.5
-  "@mikro-orm/seeder": ^7.2.5
+  vue-tsc: ^3.3.14
+  "@iconify-json/fluent": ^1.2.62
+  "@iconify-json/lucide": ^1.2.158
+  evlog: ^2.37.1
+  "@nestjs/common": ^12.6.0
+  "@nestjs/core": ^12.6.0
+  "@nestjs/platform-fastify": ^12.6.0
+  "@nestjs/testing": ^12.6.0
+  "@mikro-orm/cli": ^7.2.11
+  "@mikro-orm/core": ^7.2.11
+  "@mikro-orm/decorators": ^7.2.11
+  "@mikro-orm/migrations": ^7.2.11
+  "@mikro-orm/postgresql": ^7.2.11
+  "@mikro-orm/seeder": ^7.2.11
 
 minimumReleaseAgeExclude:
   - vue

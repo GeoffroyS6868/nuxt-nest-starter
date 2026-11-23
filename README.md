@@ -25,7 +25,7 @@ Redis is included so `/health` and future cache/session work have a broker. Noth
 
 ## Prerequisites
 
-- Node.js 24.21.0 (see `.nvmrc`)
+- Node.js 24.22.3 (see `.nvmrc`)
 - pnpm 12+
 - Docker and Docker Compose for local Postgres and Redis
 
