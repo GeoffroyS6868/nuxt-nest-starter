@@ -1,12 +1,10 @@
 # syntax=docker/dockerfile:1.7
 
 # Monorepo context: always build from repository root (--file apps/back/Dockerfile).
-FROM node:24.21.0-bookworm-slim AS base
+FROM node:24.22.3-alpine AS base
 
-RUN apt-get update \
-  && apt-get install -y --no-install-recommends openssl ca-certificates \
-  && rm -rf /var/lib/apt/lists/* \
-  && npm install -g pnpm@12.11.2
+RUN apk upgrade --no-cache \
+  && npm install -g pnpm@12.23.0
 
 WORKDIR /app
 
@@ -51,18 +49,20 @@ RUN --mount=type=cache,target=/pnpm/store,id=pnpm-store-back \
       --filter ./apps/back... \
       --filter ./packages/utils...
 
-FROM node:24.21.0-bookworm-slim AS runtime
+FROM node:24.22.3-alpine AS runtime
 
 ENV NODE_ENV=production
 
 ARG APP_RELEASE=unknown
 
-RUN apt-get update \
-  && apt-get install -y --no-install-recommends openssl ca-certificates \
-  && rm -rf /var/lib/apt/lists/* \
-  && npm install -g pnpm@12.11.2 \
-  && addgroup --system --gid 1001 app \
-  && adduser --system --uid 1001 --ingroup app --home /nonexistent --shell /usr/sbin/nologin app
+# Keep pnpm for the package scripts; drop npm, corepack and yarn and their CVEs.
+RUN apk upgrade --no-cache \
+  && npm install -g pnpm@12.23.0 \
+  && rm -rf /usr/local/lib/node_modules/npm /usr/local/lib/node_modules/corepack \
+    /usr/local/bin/npm /usr/local/bin/npx /usr/local/bin/corepack \
+    /opt/yarn-* /usr/local/bin/yarn /usr/local/bin/yarnpkg \
+  && addgroup -g 1001 -S app \
+  && adduser -S -u 1001 -G app app
 
 WORKDIR /app
 

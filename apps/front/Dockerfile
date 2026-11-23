@@ -1,11 +1,12 @@
 # syntax=docker/dockerfile:1.7
 
 # Monorepo context: always build from repository root (--file apps/front/Dockerfile).
-FROM node:24.21.0-alpine AS base
+FROM node:24.22.3-alpine AS base
 
 WORKDIR /app
-RUN apk add --no-cache libc6-compat \
-  && npm install -g pnpm@12.11.2
+RUN apk upgrade --no-cache \
+  && apk add --no-cache libc6-compat \
+  && npm install -g pnpm@12.23.0
 
 FROM base AS deps
 
@@ -41,7 +42,7 @@ ENV NUXT_PUBLIC_API_BASE=${NUXT_PUBLIC_API_BASE}
 
 RUN pnpm run build
 
-FROM node:24.21.0-alpine AS runtime
+FROM node:24.22.3-alpine AS runtime
 
 ENV NODE_ENV=production
 ENV NITRO_HOST=0.0.0.0
@@ -52,7 +53,12 @@ ENV PORT=4000
 ARG APP_RELEASE=unknown
 LABEL org.opencontainers.image.revision="${APP_RELEASE}"
 
-RUN addgroup -g 1001 -S app && adduser -S -u 1001 -G app app
+# The runtime only needs node: drop the bundled package managers and their CVEs.
+RUN apk upgrade --no-cache \
+  && rm -rf /usr/local/lib/node_modules /usr/local/bin/npm /usr/local/bin/npx \
+    /usr/local/bin/corepack /opt/yarn-* /usr/local/bin/yarn /usr/local/bin/yarnpkg \
+  && addgroup -g 1001 -S app \
+  && adduser -S -u 1001 -G app app
 
 WORKDIR /app
 

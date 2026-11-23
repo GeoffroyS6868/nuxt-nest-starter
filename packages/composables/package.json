@@ -16,7 +16,7 @@
     "typecheck": "tsc --noEmit -p tsconfig.json"
   },
   "dependencies": {
-    "@nuxt/kit": "^4.6.1",
+    "@nuxt/kit": "^4.6.4",
     "@starter/types": "workspace:*"
   },
   "devDependencies": {
